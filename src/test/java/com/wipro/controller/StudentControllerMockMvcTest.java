@@ -5,16 +5,12 @@ import static org.hamcrest.Matchers.is;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.post;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.*;
 
-
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
-import org.springframework.test.context.junit.jupiter.web.SpringJUnitWebConfig;
 import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.test.web.servlet.setup.MockMvcBuilders;
-import org.springframework.web.servlet.ViewResolver;
 import org.springframework.web.servlet.view.InternalResourceViewResolver;
 
-@SpringJUnitWebConfig(locations = {"/WEB-INF/abc-servlet.xml"}) // Your dispatcher config
 public class StudentControllerMockMvcTest {
 
     private MockMvc mockMvc;
@@ -23,11 +19,11 @@ public class StudentControllerMockMvcTest {
     public void setup() {
         mockMvc = MockMvcBuilders
                 .standaloneSetup(new StudentController())
-                .setViewResolvers(viewResolver())
+                .setViewResolvers(viewResolver()) // View Resolver setup for JSP
                 .build();
     }
 
-    private ViewResolver viewResolver() {
+    private InternalResourceViewResolver viewResolver() {
         InternalResourceViewResolver resolver = new InternalResourceViewResolver();
         resolver.setPrefix("/WEB-INF/views/");
         resolver.setSuffix(".jsp");
