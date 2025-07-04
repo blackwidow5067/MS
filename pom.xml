@@ -51,6 +51,14 @@
             <version>${spring.version}</version>
             <scope>test</scope>
         </dependency>
+        <!-- Hamcrest (for matchers like hasProperty, is, etc.) -->
+<dependency>
+    <groupId>org.hamcrest</groupId>
+    <artifactId>hamcrest</artifactId>
+    <version>2.2</version>
+    <scope>test</scope>
+</dependency>
+
 
     </dependencies>
 
