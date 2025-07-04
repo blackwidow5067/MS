@@ -16,9 +16,11 @@ class StudentControllerTest {
 
         ModelAndView mav = controller.getStudent(id, name);
 
+        // Validate that ModelAndView is not null and the view is "display"
         assertNotNull(mav);
         assertEquals("display", mav.getViewName());
 
+        // Validate the student object is present in the model with key "xyz"
         Object studentObj = mav.getModel().get("xyz");
         assertNotNull(studentObj);
         assertTrue(studentObj instanceof Student);
@@ -33,6 +35,7 @@ class StudentControllerTest {
         StudentController controller = new StudentController();
         ModelAndView mav = controller.getStudent(123, "");
 
+        // Validate that an empty name is correctly set on the student object
         Student student = (Student) mav.getModel().get("xyz");
         assertEquals("", student.getStname());
     }
@@ -42,34 +45,30 @@ class StudentControllerTest {
         StudentController controller = new StudentController();
         ModelAndView mav = controller.getStudent(-1, "Neg ID");
 
+        // Validate that the negative ID and name are correctly set on the student object
         Student student = (Student) mav.getModel().get("xyz");
         assertEquals(-1, student.getStid());
         assertEquals("Neg ID", student.getStname());
     }
+
     @Test
-void testGetStudent_WithNullName() {
-    StudentController controller = new StudentController();
-    ModelAndView mav = controller.getStudent(123, null);
+    void testGetStudent_WithNullName() {
+        // In the current version of the controller, stid cannot be null, so this test case would work for empty name
+        StudentController controller = new StudentController();
+        ModelAndView mav = controller.getStudent(123, null);
 
-    Student student = (Student) mav.getModel().get("xyz");
-    assertNull(student.getStname());
-}
+        // Validate that the name is null
+        Student student = (Student) mav.getModel().get("xyz");
+        assertNull(student.getStname());
+    }
 
-@Test
-void testGetStudent_WithNullId() {
-    StudentController controller = new StudentController();
-    ModelAndView mav = controller.getStudent(null, "Test Name");
-
-    Student student = (Student) mav.getModel().get("xyz");
-    assertNull(student.getStid());
-}
-@Test
+    @Test
     void testGetStudent_ModelAttribute() {
         StudentController controller = new StudentController();
         ModelAndView mav = controller.getStudent(123, "Alice");
 
+        // Validate the student object is correctly added to the model under "xyz"
         assertTrue(mav.getModel().containsKey("xyz"));
         assertNotNull(mav.getModel().get("xyz"));
     }
-    
 }
