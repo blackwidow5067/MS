@@ -46,4 +46,30 @@ class StudentControllerTest {
         assertEquals(-1, student.getStid());
         assertEquals("Neg ID", student.getStname());
     }
+    @Test
+void testGetStudent_WithNullName() {
+    StudentController controller = new StudentController();
+    ModelAndView mav = controller.getStudent(123, null);
+
+    Student student = (Student) mav.getModel().get("xyz");
+    assertNull(student.getStname());
+}
+
+@Test
+void testGetStudent_WithNullId() {
+    StudentController controller = new StudentController();
+    ModelAndView mav = controller.getStudent(null, "Test Name");
+
+    Student student = (Student) mav.getModel().get("xyz");
+    assertNull(student.getStid());
+}
+@Test
+    void testGetStudent_ModelAttribute() {
+        StudentController controller = new StudentController();
+        ModelAndView mav = controller.getStudent(123, "Alice");
+
+        assertTrue(mav.getModel().containsKey("xyz"));
+        assertNotNull(mav.getModel().get("xyz"));
+    }
+    
 }
