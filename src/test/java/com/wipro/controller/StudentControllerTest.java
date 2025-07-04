@@ -50,6 +50,7 @@ class StudentControllerTest {
         assertEquals(-1, student.getStid());
         assertEquals("Neg ID", student.getStname());
     }
+<<<<<<< HEAD
 
     @Test
     void testGetStudent_WithNullName() {
@@ -71,4 +72,6 @@ class StudentControllerTest {
         assertTrue(mav.getModel().containsKey("xyz"));
         assertNotNull(mav.getModel().get("xyz"));
     }
+=======
+>>>>>>> 005ea51 (final)
 }
