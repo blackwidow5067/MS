@@ -32,7 +32,7 @@
         <dependency>
             <groupId>jakarta.servlet</groupId>
             <artifactId>jakarta.servlet-api</artifactId>
-            <version>5.0.0</version>
+            <version>5.0.2</version> <!-- Updated to 5.0.2 -->
             <scope>provided</scope>
         </dependency>
 
@@ -51,14 +51,14 @@
             <version>${spring.version}</version>
             <scope>test</scope>
         </dependency>
-        <!-- Hamcrest (for matchers like hasProperty, is, etc.) -->
-<dependency>
-    <groupId>org.hamcrest</groupId>
-    <artifactId>hamcrest</artifactId>
-    <version>2.2</version>
-    <scope>test</scope>
-</dependency>
 
+        <!-- Hamcrest (for matchers like hasProperty, is, etc.) -->
+        <dependency>
+            <groupId>org.hamcrest</groupId>
+            <artifactId>hamcrest</artifactId>
+            <version>2.2</version>
+            <scope>test</scope>
+        </dependency>
 
     </dependencies>
 
@@ -77,11 +77,12 @@
                 </configuration>
             </plugin>
 
-                 <plugin>
-            <groupId>org.apache.maven.plugins</groupId>
-            <artifactId>maven-war-plugin</artifactId>
-            <version>3.4.0</version>
-        </plugin>
+            <!-- Maven WAR Plugin -->
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-war-plugin</artifactId>
+                <version>3.4.0</version>
+            </plugin>
 
             <!-- Surefire Plugin for JUnit 5 -->
             <plugin>
@@ -89,26 +90,28 @@
                 <artifactId>maven-surefire-plugin</artifactId>
                 <version>3.2.5</version>
                 <configuration>
+                    <useModulePath>false</useModulePath> <!-- Ensures compatibility with JUnit 5 in Java 9+ -->
                     <includes>
                         <include>**/*Test.java</include>
                     </includes>
                 </configuration>
             </plugin>
-         
-    <!-- JaCoCo plugin for code coverage -->
-    <plugin>
-        <groupId>org.jacoco</groupId>
-        <artifactId>jacoco-maven-plugin</artifactId>
-        <version>0.8.8</version>
-        <executions>
-            <execution>
-                <goals>
-                    <goal>prepare-agent</goal>
-                    <goal>report</goal>
-                </goals>
-            </execution>
-        </executions>
-    </plugin>
+
+            <!-- JaCoCo Plugin for Code Coverage -->
+            <plugin>
+                <groupId>org.jacoco</groupId>
+                <artifactId>jacoco-maven-plugin</artifactId>
+                <version>0.8.9</version> <!-- Updated to 0.8.9 to support Java 21 -->
+                <executions>
+                    <execution>
+                        <goals>
+                            <goal>prepare-agent</goal>
+                            <goal>report</goal>
+                        </goals>
+                    </execution>
+                </executions>
+            </plugin>
+
         </plugins>
     </build>
 
