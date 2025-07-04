@@ -51,7 +51,6 @@
             <version>${spring.version}</version>
             <scope>test</scope>
         </dependency>
-<<<<<<< HEAD
 
         <!-- Hamcrest (for matchers like hasProperty, is, etc.) -->
         <dependency>
@@ -60,8 +59,7 @@
             <version>2.2</version>
             <scope>test</scope>
         </dependency>
-=======
->>>>>>> 005ea51 (final)
+
 
     </dependencies>
 
@@ -97,7 +95,7 @@
                     </includes>
                 </configuration>
             </plugin>
-<<<<<<< HEAD
+
 
             <!-- JaCoCo plugin for code coverage -->
             <plugin>
@@ -113,7 +111,7 @@
                     </execution>
                 </executions>
             </plugin>
-=======
+
          
     <!-- JaCoCo plugin for code coverage -->
     <plugin>
@@ -134,7 +132,7 @@
   <artifactId>sonar-maven-plugin</artifactId>
   <version>3.11.0.3922</version>
 </plugin>
->>>>>>> 005ea51 (final)
+
 
         </plugins>
     </build>
