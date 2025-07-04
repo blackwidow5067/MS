@@ -4,7 +4,7 @@
     isELIgnored="false"
     %>
 <!DOCTYPE html>
-<html>
+<html lang="en" xml:lang="en">
 <head>
 <meta charset="ISO-8859-1">
 <title>Insert title here</title>
