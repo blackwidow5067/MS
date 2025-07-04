@@ -8,18 +8,15 @@ import org.springframework.web.servlet.ModelAndView;
  
 import com.wipro.model.Student;
  
-import jakarta.servlet.http.HttpServletRequest;
-import jakarta.servlet.http.HttpServletResponse;
+
  
 @Controller
 public class StudentController {
  
 	
-	@RequestMapping(method = RequestMethod.POST,value ="/saveStudent")
+	@PostMapping("/saveStudent") 
 	public ModelAndView getStudent(@RequestParam("studentId") int stid,@RequestParam("studentName") String stname	)
 	{
-		//int stid = Integer.parseInt(request.getParameter("studentId"));
-		//String stname= request.getParameter("studentName");
 		ModelAndView mv = new ModelAndView();
 		Student student = new Student();
 		student.setStid(stid);
