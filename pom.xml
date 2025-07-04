@@ -32,7 +32,7 @@
         <dependency>
             <groupId>jakarta.servlet</groupId>
             <artifactId>jakarta.servlet-api</artifactId>
-            <version>5.0.2</version> <!-- Updated to 5.0.2 -->
+            <version>5.0.0</version> <!-- Updated version -->
             <scope>provided</scope>
         </dependency>
 
@@ -77,7 +77,6 @@
                 </configuration>
             </plugin>
 
-            <!-- Maven WAR Plugin -->
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-war-plugin</artifactId>
@@ -90,18 +89,17 @@
                 <artifactId>maven-surefire-plugin</artifactId>
                 <version>3.2.5</version>
                 <configuration>
-                    <useModulePath>false</useModulePath> <!-- Ensures compatibility with JUnit 5 in Java 9+ -->
                     <includes>
                         <include>**/*Test.java</include>
                     </includes>
                 </configuration>
             </plugin>
 
-            <!-- JaCoCo Plugin for Code Coverage -->
+            <!-- JaCoCo plugin for code coverage -->
             <plugin>
                 <groupId>org.jacoco</groupId>
                 <artifactId>jacoco-maven-plugin</artifactId>
-                <version>0.8.9</version> <!-- Updated to 0.8.9 to support Java 21 -->
+                <version>0.8.8</version>
                 <executions>
                     <execution>
                         <goals>
